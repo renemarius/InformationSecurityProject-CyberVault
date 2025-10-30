@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova - Technology Consulting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: #2c3e50;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            color: #2c3e50;
+            margin: 2rem 0 1rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .admin-container {
+            max-width: 500px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #e74c3c;
+        }
+
+        .admin-container h2 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .admin-container .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-container .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">TechNova</div>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('inquiry')">Inquiry</a></li>
+                <li><a href="#" onclick="showPage('login')">Client Login</a></li>
+                <li><a href="#" onclick="showPage('admin')">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>Welcome to TechNova</h1>
+            <p>Transforming businesses through innovative technology solutions</p>
+            <a href="#" onclick="showPage('inquiry')" class="btn">Get Started</a>
+        </div>
+
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Our Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>Cloud Solutions</h3>
+                    <p>Migrate and optimize your infrastructure with cutting-edge cloud technology.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your business with comprehensive security assessments and solutions.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Data Analytics</h3>
+                    <p>Transform data into actionable insights for strategic decision-making.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Digital Transformation</h3>
+                    <p>Modernize your operations with custom digital solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="container">
+            <div class="about-content">
+                <h1>About TechNova</h1>
+                <p>Founded in 2015, TechNova has been at the forefront of technology consulting, helping businesses navigate the complex digital landscape.</p>
+                
+                <h2>Our Mission</h2>
+                <p>We empower organizations to harness the full potential of technology through strategic consulting, innovative solutions, and dedicated support. Our team of expert consultants brings decades of combined experience across various industries.</p>
+                
+                <h2>Our Approach</h2>
+                <p>We believe in a collaborative approach, working closely with our clients to understand their unique challenges and goals. Our solutions are tailored to meet specific business needs, ensuring maximum impact and ROI.</p>
+                
+                <h2>Why Choose Us</h2>
+                <p>With a proven track record of successful implementations, TechNova has helped over 200 companies transform their technology infrastructure. Our consultants stay ahead of industry trends to provide cutting-edge solutions that drive real business value.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inquiry Page -->
+    <div id="inquiry" class="page">
+        <div class="container">
+            <h1 style="text-align: center; margin-bottom: 2rem;">Contact Us</h1>
+            <form onsubmit="handleInquiry(event)" style="max-width: 600px; margin: 0 auto;">
+                <div class="form-group">
+                    <label>Company Name *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel">
+                </div>
+                <div class="form-group">
+                    <label>Service Interest *</label>
+                    <select required>
+                        <option value="">Select a service</option>
+                        <option>Cloud Solutions</option>
+                        <option>Cybersecurity</option>
+                        <option>Data Analytics</option>
+                        <option>Digital Transformation</option>
+                        <option>General Consulting</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message *</label>
+                    <textarea required placeholder="Tell us about your project or inquiry..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login" class="page">
+        <div class="login-container">
+            <h2>Client Portal Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Login Page -->
+    <div id="admin" class="page">
+        <div class="admin-container">
+            <h2>Administrative Access</h2>
+            <p class="subtitle">Restricted Area - Authorized Personnel Only</p>
+            
+            <div class="warning">
+                <strong>⚠️ Security Notice:</strong> This area is monitored. Unauthorized access attempts are logged and may result in legal action.
+            </div>
+
+            <form onsubmit="handleAdminLogin(event)">
+                <div class="form-group">
+                    <label>Administrator Username</label>
+                    <input type="text" id="admin-username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="admin-password" required autocomplete="current-password">
+                </div>
+                <div class="form-group">
+                    <label>Two-Factor Authentication Code</label>
+                    <input type="text" id="admin-2fa" placeholder="000000" maxlength="6" pattern="[0-9]{6}">
+                </div>
+                <button type="submit" class="btn" style="width: 100%; background: #e74c3c;">
+                    Authenticate
+                </button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: #7f8c8d;">
+                Forgot credentials? Contact IT Support: support@technova.com
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TechNova Consulting. All rights reserved.</p>
+        <p>Email: contact@technova.com | Phone: (555) 123-4567</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function handleInquiry(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! Our team will contact you within 24 hours.');
+            e.target.reset();
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            alert('Login functionality would connect to your authentication system here.');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('admin-username').value;
+            const password = document.getElementById('admin-password').value;
+            const twofa = document.getElementById('admin-2fa').value;
+            
+            // This is where your IDS would monitor for suspicious activity
+            console.log('Admin login attempt detected');
+            console.log('Username:', username);
+            console.log('Timestamp:', new Date().toISOString());
+            
+            alert('Administrative authentication in progress...\n\nThis is the monitored endpoint for the IDS demonstration.');
+        }
+    </script>
+</body>
+</html>
