@@ -225,6 +225,94 @@
             border-radius: 4px;
             font-size: 0.9rem;
         }
+
+        .admin-dashboard {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .admin-header .user-info {
+            text-align: right;
+        }
+
+        .admin-header .user-info p {
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+
+        .stat-card h3 {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .admin-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .admin-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -371,7 +459,7 @@
                 </div>
                 <div class="form-group">
                     <label>Two-Factor Authentication Code</label>
-                    <input type="text" id="admin-2fa" placeholder="000000" maxlength="6" pattern="[0-9]{6}">
+                    <input type="text" id="admin-2fa" placeholder="000000" maxlength="6" pattern="[0-9]{6}" required>
                 </div>
                 <button type="submit" class="btn" style="width: 100%; background: #e74c3c;">
                     Authenticate
@@ -384,12 +472,78 @@
         </div>
     </div>
 
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="page">
+        <div class="admin-dashboard">
+            <div class="admin-header">
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <p style="margin: 0; opacity: 0.8;">Welcome back to TechNova Control Panel</p>
+                </div>
+                <div class="user-info">
+                    <p><strong id="admin-name">Administrator</strong></p>
+                    <p id="admin-role">Role: Super Admin</p>
+                    <p style="font-size: 0.8rem;">Last login: <span id="last-login"></span></p>
+                    <button class="logout-btn" onclick="handleLogout()">Logout</button>
+                </div>
+            </div>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>Active Clients</h3>
+                    <div class="number">47</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #2ecc71;">
+                    <h3>Active Projects</h3>
+                    <div class="number">23</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #f39c12;">
+                    <h3>Pending Requests</h3>
+                    <div class="number">12</div>
+                </div>
+                <div class="stat-card" style="border-left-color: #e74c3c;">
+                    <h3>Security Alerts</h3>
+                    <div class="number">3</div>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>System Overview</h2>
+                <p>Welcome to the TechNova administrative control panel. From here, you can manage client accounts, monitor ongoing projects, review security logs, and configure system settings.</p>
+                <p style="margin-top: 1rem;"><strong>System Status:</strong> All systems operational</p>
+                <p><strong>Server Uptime:</strong> 99.98%</p>
+                <p><strong>Last Backup:</strong> 2 hours ago</p>
+            </div>
+
+            <div class="admin-section">
+                <h2>Quick Actions</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn">View Client List</button>
+                    <button class="btn" style="background: #2ecc71;">Create New Project</button>
+                    <button class="btn" style="background: #f39c12;">Security Logs</button>
+                    <button class="btn" style="background: #9b59b6;">System Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 TechNova Consulting. All rights reserved.</p>
         <p>Email: contact@technova.com | Phone: (555) 123-4567</p>
     </footer>
 
     <script>
+        // Sample admin credentials (in production, this would be on the server)
+        const adminCredentials = {
+            "admin": { password: "TechNova2024!", twoFactorCode: "123456", fullName: "System Administrator", role: "Super Admin" },
+            "jsmith": { password: "SecurePass789", twoFactorCode: "654321", fullName: "John Smith", role: "IT Manager" },
+            "mjohnson": { password: "Admin@2024", twoFactorCode: "987654", fullName: "Maria Johnson", role: "Security Officer" },
+            "rdavis": { password: "P@ssw0rd2024", twoFactorCode: "456789", fullName: "Robert Davis", role: "Network Admin" },
+            "swilson": { password: "TechAdmin#99", twoFactorCode: "321654", fullName: "Sarah Wilson", role: "Database Admin" }
+        };
+
+        let currentAdmin = null;
+
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -420,7 +574,44 @@
             console.log('Username:', username);
             console.log('Timestamp:', new Date().toISOString());
             
-            alert('Administrative authentication in progress...\n\nThis is the monitored endpoint for the IDS demonstration.');
+            // Validate credentials
+            if (adminCredentials[username]) {
+                const admin = adminCredentials[username];
+                if (admin.password === password && admin.twoFactorCode === twofa) {
+                    // Successful login
+                    currentAdmin = {
+                        username: username,
+                        fullName: admin.fullName,
+                        role: admin.role
+                    };
+                    
+                    // Update dashboard with admin info
+                    document.getElementById('admin-name').textContent = admin.fullName;
+                    document.getElementById('admin-role').textContent = 'Role: ' + admin.role;
+                    document.getElementById('last-login').textContent = new Date().toLocaleString();
+                    
+                    // Show dashboard
+                    showPage('admin-dashboard');
+                    alert('Authentication successful! Welcome, ' + admin.fullName);
+                } else {
+                    alert('Authentication failed: Invalid password or 2FA code');
+                    console.log('Failed login attempt for user:', username);
+                }
+            } else {
+                alert('Authentication failed: Unknown username');
+                console.log('Failed login attempt with unknown username:', username);
+            }
+        }
+
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                currentAdmin = null;
+                document.getElementById('admin-username').value = '';
+                document.getElementById('admin-password').value = '';
+                document.getElementById('admin-2fa').value = '';
+                showPage('home');
+                alert('You have been logged out successfully.');
+            }
         }
     </script>
 </body>
