@@ -1,0 +1,49 @@
+2025-11-30 22:57:32,420 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.51.60.229:5001
+2025-11-30 22:57:32,420 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-30 22:57:32,421 - werkzeug - INFO -  * Restarting with stat
+2025-11-30 22:57:32,870 - werkzeug - WARNING -  * Debugger is active!
+2025-11-30 22:57:32,875 - werkzeug - INFO -  * Debugger PIN: 202-412-969
+2025-11-30 22:57:46,169 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:57:46] "GET / HTTP/1.1" 200 -
+2025-11-30 22:57:46,184 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:57:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-30 22:57:51,990 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:57:51] "GET /inquiry HTTP/1.1" 200 -
+2025-11-30 22:57:54,411 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:57:54] "GET / HTTP/1.1" 200 -
+2025-11-30 22:57:56,277 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:57:56] "GET /inquiry HTTP/1.1" 200 -
+2025-11-30 22:58:00,544 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:58:00] "GET /client-login HTTP/1.1" 200 -
+2025-11-30 22:58:17,351 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:58:17] "GET /admin HTTP/1.1" 200 -
+2025-11-30 22:58:42,796 - TechNova - WARNING - 🔐 ADMIN LOGIN ATTEMPT - Username: admin, IP: 127.0.0.1, Timestamp: 2025-11-30T22:58:42.796638
+2025-11-30 22:58:42,888 - TechNova - INFO - ✓ ADMIN LOGIN SUCCESSFUL - User: admin (System Administrator), Role: Super Admin, IP: 127.0.0.1
+2025-11-30 22:58:42,889 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:58:42] "[32mPOST /admin HTTP/1.1[0m" 302 -
+2025-11-30 22:58:43,106 - TechNova - INFO - Admin dashboard accessed - User: admin, IP: 127.0.0.1
+2025-11-30 22:58:43,114 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:58:43] "GET /admin/dashboard HTTP/1.1" 200 -
+2025-11-30 22:59:05,314 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:05] "GET /admin HTTP/1.1" 200 -
+2025-11-30 22:59:08,097 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:08] "GET /inquiry HTTP/1.1" 200 -
+2025-11-30 22:59:09,990 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:09] "GET /about HTTP/1.1" 200 -
+2025-11-30 22:59:15,428 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:15] "GET / HTTP/1.1" 200 -
+2025-11-30 22:59:19,321 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:19] "GET /admin HTTP/1.1" 200 -
+2025-11-30 22:59:20,746 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:20] "GET /client-login HTTP/1.1" 200 -
+2025-11-30 22:59:22,309 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:22] "GET /inquiry HTTP/1.1" 200 -
+2025-11-30 22:59:36,145 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:36] "GET /admin HTTP/1.1" 200 -
+2025-11-30 22:59:49,174 - TechNova - WARNING - 🔐 ADMIN LOGIN ATTEMPT - Username: admin, IP: 127.0.0.1, Timestamp: 2025-11-30T22:59:49.174543
+2025-11-30 22:59:49,262 - TechNova - INFO - ✓ ADMIN LOGIN SUCCESSFUL - User: admin (System Administrator), Role: Super Admin, IP: 127.0.0.1
+2025-11-30 22:59:49,262 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:49] "[32mPOST /admin HTTP/1.1[0m" 302 -
+2025-11-30 22:59:49,486 - TechNova - INFO - Admin dashboard accessed - User: admin, IP: 127.0.0.1
+2025-11-30 22:59:49,495 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:49] "GET /admin/dashboard HTTP/1.1" 200 -
+2025-11-30 22:59:54,076 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 22:59:54] "GET /admin HTTP/1.1" 200 -
+2025-11-30 23:00:05,340 - TechNova - WARNING - 🔐 ADMIN LOGIN ATTEMPT - Username: admin, IP: 127.0.0.1, Timestamp: 2025-11-30T23:00:05.340764
+2025-11-30 23:00:05,428 - TechNova - WARNING - ✗ ADMIN LOGIN FAILED - Invalid password - User: admin, IP: 127.0.0.1
+2025-11-30 23:00:05,430 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 23:00:05] "POST /admin HTTP/1.1" 200 -
+2025-11-30 23:00:47,603 - TechNova - WARNING - 🔐 ADMIN LOGIN ATTEMPT - Username: jsmith, IP: 127.0.0.1, Timestamp: 2025-11-30T23:00:47.602975
+2025-11-30 23:00:47,692 - TechNova - INFO - ✓ ADMIN LOGIN SUCCESSFUL - User: jsmith (John Smith), Role: IT Manager, IP: 127.0.0.1
+2025-11-30 23:00:47,692 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 23:00:47] "[32mPOST /admin HTTP/1.1[0m" 302 -
+2025-11-30 23:00:47,933 - TechNova - INFO - Admin dashboard accessed - User: jsmith, IP: 127.0.0.1
+2025-11-30 23:00:47,942 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 23:00:47] "GET /admin/dashboard HTTP/1.1" 200 -
+2025-11-30 23:01:42,351 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 23:01:42] "GET /inquiry HTTP/1.1" 200 -
+2025-11-30 23:01:52,665 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 23:01:52] "GET /admin HTTP/1.1" 200 -
+2025-11-30 23:02:08,064 - TechNova - WARNING - 🔐 ADMIN LOGIN ATTEMPT - Username: admin, IP: 127.0.0.1, Timestamp: 2025-11-30T23:02:08.064035
+2025-11-30 23:02:08,148 - TechNova - INFO - ✓ ADMIN LOGIN SUCCESSFUL - User: admin (System Administrator), Role: Super Admin, IP: 127.0.0.1
+2025-11-30 23:02:08,148 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 23:02:08] "[32mPOST /admin HTTP/1.1[0m" 302 -
+2025-11-30 23:02:08,369 - TechNova - INFO - Admin dashboard accessed - User: admin, IP: 127.0.0.1
+2025-11-30 23:02:08,378 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 23:02:08] "GET /admin/dashboard HTTP/1.1" 200 -

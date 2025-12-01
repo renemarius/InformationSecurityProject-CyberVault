@@ -1,0 +1,16 @@
+<!-- Detect multiple failed admin logins -->
+<rule id="100001" level="10">
+  <if_matched_sid>5503</if_matched_sid>
+  <match>ADMIN LOGIN FAILED</match>
+  <description>Multiple failed admin login attempts detected</description>
+  <group>authentication_failed,admin_access</group>
+</rule>
+
+<!-- Detect admin login from suspicious IP -->
+<rule id="100002" level="12">
+  <if_matched_sid>5501</if_matched_sid>
+  <match>ADMIN LOGIN ATTEMPT</match>
+  <srcip>192.168.56.101</srcip>
+  <description>Admin login attempt from known phishing server IP</description>
+  <group>phishing,admin_access</group>
+</rule>
